@@ -76,7 +76,7 @@ class _ClientPageState extends State<ClientPage> {
               SizedBox(height: 20),
               ...clients.map(
                 (client) => CustomClient(
-                  name: client.name,
+                  name: client.firstName + client.lastName,
                   isVIP: client.isVIP,
                   number: client.number,
                   orderNumber: client.orderNumber,
