@@ -4,6 +4,7 @@ List<Order> orders = [
   Order(
     id: 1,
     customerName: "Peyman Malek",
+    clientID: 1,
     progress: Status.inProgress,
     cloth: "Bespoke Suit",
     orderNumber: 2401,
@@ -36,6 +37,7 @@ List<Order> orders = [
   Order(
     id: 2,
     customerName: "Ali Ahmadi",
+    clientID: 1,
     progress: Status.ready,
     cloth: "Evening Gown",
     orderNumber: 2402,
@@ -68,6 +70,7 @@ List<Order> orders = [
   Order(
     id: 3,
     customerName: "Karim Mohammadi",
+    clientID: 1,
     progress: Status.newOrder,
     cloth: "Linen Shirts ×3",
     orderNumber: 2403,
@@ -100,6 +103,7 @@ List<Order> orders = [
   Order(
     id: 4,
     customerName: "Reza Karimi",
+    clientID: 1,
     progress: Status.delivery,
     cloth: "Chino Trousers ×2",
     orderNumber: 2404,
@@ -131,6 +135,7 @@ List<Order> orders = [
 ];
 final List<Client> clients = [
   Client(
+    id: 1,
     firstName: 'Peyman',
     lastName: "Malek",
     isVIP: true,
@@ -139,6 +144,7 @@ final List<Client> clients = [
   ),
 
   Client(
+    id: 2,
     firstName: 'Ali',
     lastName: "Ahmadi",
     isVIP: false,
@@ -147,6 +153,7 @@ final List<Client> clients = [
   ),
 
   Client(
+    id: 3,
     firstName: 'Karim',
     lastName: "Mohammadi",
     isVIP: true,
@@ -155,6 +162,7 @@ final List<Client> clients = [
   ),
 
   Client(
+    id: 4,
     firstName: 'Reza',
     lastName: "Karimi",
     isVIP: false,
@@ -163,6 +171,7 @@ final List<Client> clients = [
   ),
 
   Client(
+    id: 5,
     firstName: 'Milad',
     lastName: "Hosseini",
     isVIP: true,
@@ -171,6 +180,7 @@ final List<Client> clients = [
   ),
 
   Client(
+    id: 6,
     firstName: 'Amir',
     lastName: "Hosseini",
     isVIP: false,
@@ -179,6 +189,7 @@ final List<Client> clients = [
   ),
 
   Client(
+    id: 7,
     firstName: 'Sina',
     lastName: "Rahimi",
     isVIP: true,
@@ -187,6 +198,7 @@ final List<Client> clients = [
   ),
 
   Client(
+    id: 8,
     firstName: 'Mohammad',
     lastName: "Karimi",
     isVIP: false,
