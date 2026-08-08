@@ -12,6 +12,7 @@ class Order {
   final DateTime deliveryTime;
   final int price;
   final BodyMeasurements measurements;
+  final int clientID;
 
   const Order({
     required this.id,
@@ -23,10 +24,12 @@ class Order {
     required this.price,
     required this.progressStatys,
     required this.measurements,
+    required this.clientID,
   });
 }
 
 class Client {
+  final int id;
   final String firstName;
   final String lastName;
   final bool isVIP;
@@ -39,6 +42,7 @@ class Client {
     required this.isVIP,
     required this.number,
     required this.orderNumber,
+    required this.id,
   });
 }
 
