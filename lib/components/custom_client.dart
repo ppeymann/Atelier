@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tail/components/custom_avatar.dart';
 import 'package:tail/components/index.dart';
 import 'package:tail/core/extensions/index.dart';
+import 'package:tail/pages/index.dart';
 
 class CustomClient extends StatefulWidget {
+  final int id;
   final String name;
   final bool isVIP;
   final String number;
@@ -15,6 +17,7 @@ class CustomClient extends StatefulWidget {
     required this.isVIP,
     required this.number,
     required this.orderNumber,
+    required this.id,
   });
 
   @override
@@ -25,7 +28,14 @@ class _CustomClientState extends State<CustomClient> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {},
+      onTap: () => {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => ClientDetailPage(clientID: widget.id),
+          ),
+        ),
+      },
       child: Padding(
         padding: EdgeInsetsGeometry.all(12.0),
         child: Container(
