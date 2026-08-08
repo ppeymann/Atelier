@@ -1,4 +1,5 @@
 export 'add_client_page.dart';
+export 'client_detail_page.dart';
 export 'client_page.dart';
 export 'home_page.dart';
 export 'login_register_page.dart';
