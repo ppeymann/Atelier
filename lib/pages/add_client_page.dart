@@ -16,9 +16,9 @@ class _AddClientPageState extends State<AddClientPage> {
   final _phone = TextEditingController();
   final _city = TextEditingController();
   final _country = TextEditingController();
-  String selectedValue = "Standard";
+  String selectedValue = "";
 
-  final stylePreferences = [
+  final _stylePreferences = [
     "Classic",
     "Modern",
     "Minimal",
@@ -31,7 +31,17 @@ class _AddClientPageState extends State<AddClientPage> {
     "Bohemian",
   ];
 
-  final Set<String> selectedOptions = {};
+  final Set<String> _selectedOptions = {};
+  @override
+  void dispose() {
+    _firstName.dispose();
+    _lastName.dispose();
+    _email.dispose();
+    _phone.dispose();
+    _city.dispose();
+    _country.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,15 +109,15 @@ class _AddClientPageState extends State<AddClientPage> {
                   Wrap(
                     spacing: 12,
                     runSpacing: 12,
-                    children: stylePreferences.map((option) {
-                      final isSelected = selectedOptions.contains(option);
+                    children: _stylePreferences.map((option) {
+                      final isSelected = _selectedOptions.contains(option);
                       return GestureDetector(
                         onTap: () {
                           setState(() {
-                            if (selectedOptions.contains(option)) {
-                              selectedOptions.remove(option);
+                            if (_selectedOptions.contains(option)) {
+                              _selectedOptions.remove(option);
                             } else {
-                              selectedOptions.add(option);
+                              _selectedOptions.add(option);
                             }
                           });
                         },
