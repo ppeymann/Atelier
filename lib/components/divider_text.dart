@@ -8,7 +8,7 @@ class DividerText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primary;
+    final color = Colors.grey;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
