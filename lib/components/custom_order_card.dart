@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tail/components/index.dart';
 import 'package:tail/core/extensions/index.dart';
-import 'package:tail/core/extensions/string_extension.dart';
 import 'package:tail/models/index.dart';
 import 'package:intl/intl.dart';
 import 'package:tail/pages/order_detail_page.dart';
