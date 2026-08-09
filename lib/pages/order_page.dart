@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tail/components/index.dart';
 import 'package:tail/data/index.dart';
 import 'package:tail/models/index.dart';
+import 'package:tail/pages/add_order_page.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
@@ -40,6 +41,19 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+      floatingActionButton: Padding(
+        padding: EdgeInsetsGeometry.all(12),
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => AddOrderPage()),
+            );
+          },
+          child: Icon(Icons.add),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
