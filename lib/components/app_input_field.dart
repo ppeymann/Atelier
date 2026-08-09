@@ -10,6 +10,18 @@ class AppInputField extends StatefulWidget {
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
 
+  final int? maxLines;
+  final int? minLines;
+  final bool readOnly;
+  final bool enabled;
+  final bool autofocus;
+
+  final ValueChanged<String>? onChanged;
+  final VoidCallback? onTap;
+
+  final TextInputAction? textInputAction;
+  final TextCapitalization textCapitalization;
+
   const AppInputField({
     super.key,
     required this.label,
@@ -19,6 +31,15 @@ class AppInputField extends StatefulWidget {
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
     this.validator,
+    this.maxLines = 1,
+    this.minLines,
+    this.readOnly = false,
+    this.enabled = true,
+    this.autofocus = false,
+    this.onChanged,
+    this.onTap,
+    this.textInputAction,
+    this.textCapitalization = TextCapitalization.none,
   });
 
   @override
@@ -37,79 +58,90 @@ class _AppInputFieldState extends State<AppInputField> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final colors = Theme.of(context).colorScheme;
 
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // LABEL
-          Text(
-            widget.label,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.bold,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          widget.label,
+          style: TextStyle(
+            color: colors.secondary,
+            fontWeight: FontWeight.bold,
           ),
+        ),
 
-          const SizedBox(height: 8),
+        const SizedBox(height: 8),
 
-          Focus(
-            onFocusChange: (focus) {
-              setState(() {
-                hasFocus = focus;
-              });
-            },
-            child: TextField(
-              controller: widget.controller,
-              keyboardType: widget.keyboardType,
-              obscureText: obscure,
+        Focus(
+          onFocusChange: (focus) {
+            setState(() {
+              hasFocus = focus;
+            });
+          },
+          child: TextFormField(
+            controller: widget.controller,
+            keyboardType: widget.keyboardType,
+            obscureText: obscure,
+            maxLines: widget.isPassword ? 1 : widget.maxLines,
+            minLines: widget.minLines,
+            readOnly: widget.readOnly,
+            enabled: widget.enabled,
+            autofocus: widget.autofocus,
+            onChanged: widget.onChanged,
+            onTap: widget.onTap,
+            validator: widget.validator,
+            textInputAction: widget.textInputAction,
+            textCapitalization: widget.textCapitalization,
+            style: TextStyle(color: colors.primary),
 
-              style: TextStyle(color: Theme.of(context).colorScheme.tertiary),
+            decoration: InputDecoration(
+              hintText: widget.hint,
 
-              decoration: InputDecoration(
-                hintText: widget.hint,
-                hintStyle: TextStyle(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                filled: true,
-                fillColor: Colors.white,
+              hintStyle: TextStyle(color: colors.secondary),
 
-                prefixIcon: Icon(
-                  widget.icon,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+              filled: true,
+              fillColor: Colors.white,
 
-                suffixIcon: widget.isPassword
-                    ? IconButton(
-                        onPressed: () {
-                          setState(() {
-                            obscure = !obscure;
-                          });
-                        },
-                        icon: Icon(
-                          obscure ? Icons.visibility : Icons.visibility_off,
-                        ),
-                      )
-                    : null,
+              prefixIcon: Icon(widget.icon, color: colors.secondary),
 
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: Colors.black),
-                ),
+              suffixIcon: widget.isPassword
+                  ? IconButton(
+                      onPressed: () {
+                        setState(() {
+                          obscure = !obscure;
+                        });
+                      },
+                      icon: Icon(
+                        obscure ? Icons.visibility : Icons.visibility_off,
+                        color: colors.secondary,
+                      ),
+                    )
+                  : null,
 
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primary,
-                    width: 1.5,
-                  ),
-                ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: const BorderSide(color: Colors.grey),
+              ),
+
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: colors.primary, width: 1.5),
+              ),
+
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: const BorderSide(color: Colors.red),
+              ),
+
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: const BorderSide(color: Colors.red, width: 1.5),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
